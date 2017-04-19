@@ -35,7 +35,7 @@ listDiv.addEventListener("click", function(e) {
     console.log("selectedList", selectedList);
 
     updateLists();
-    updateItemsForSelectedList(;
+    updateItemsForSelectedList();
 });
 
 // ------------------------------------------------------
@@ -52,16 +52,16 @@ function updateLists() {
         aElement.classList.add("list-group-item");
         aElement.classList.add("list-group-item-action");
         aElement.classList.add("list");
-        if (selectedList == i) {
+        if (selectedList == index) {
             aElement.classList.add("active");
         }
-        aElement.setAttribute("data-index", i);
+        aElement.setAttribute("data-index", index);
 
         var textNode = document.createTextNode(list.name);
         aElement.appendChild(textNode);
 
         listDiv.appendChild(aElement);
-    );
+    });
 }
 
 function updateItemsForSelectedList() {
@@ -133,7 +133,7 @@ var buttonsArray = document.querySelectorAll(".popup-button");
 // querySelectorAll returns a DOMTokenList and not an Array (which includes methods like forEach)
 buttonsArray = Array.from(buttonsArray); // Conevrting DOMTokenList to an Array
 
-buttonArray.forEach(function(button) {
+buttonsArray.forEach(function(button) {
     button.addEventListener("click", function() {
         var popup = document.getElementById(this.dataset.popupid);
         // The data attributes can be accessed by .dataset variable which is part of the DOMElement (check HTML for buttonsArray)

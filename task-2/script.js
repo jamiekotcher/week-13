@@ -17,7 +17,19 @@ var addItemButton = document.getElementById("add-item-button");
 // ------------------------------------------------------
 // GET AND SET DATA FROM LOCAL STORAGE
 // ------------------------------------------------------
+if (!localstorage.getItem("listkeeper-data")) {
+    var dataString = JSON.stringify(listArray);
+    console.log(dataString);
+    localstorage.setItem("listkeeper-data", dataString);
+}
 
+function getData() {
+    var dataString = localStroage.getItem("listkeeper-data");
+    return JSON.parse(dataString); //JSON = JavaScript object notation
+
+}
+
+//can now use instead of list array 
 
 // ------------------------------------------------------
 // LIST SELECTION
